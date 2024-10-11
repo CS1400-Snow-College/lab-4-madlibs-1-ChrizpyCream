@@ -25,21 +25,21 @@ string word ="";
 string article = "";
 
 
-for(int i = 0; i<storyWords.Length; i++)
+for(int i = 0; i<storyWords.Length; i++) //makes a loop that iterates each word in thewords array
 {
     // if the word contains both parantheses then itll do it
-    bool isQuestion = storyWords[i].Contains( "(" ) && storyWords[i].Contains( ")" ); //bool true or false
-    if(isQuestion == true)
+    bool isQuestion = storyWords[i].Contains('(') && storyWords[i].Contains(')'); // checks if the current word has both opening and closing parathesis which indicates its a placeholder 
+    if(isQuestion == true) // if the word is a "parathesis "placeholder , itll be executed
     {
-    word = storyWords[i]; //important
+    word = storyWords[i]; //important by assing the current place holder word to "word" also punctation helps null charcter 
     char punctuation = '\0';
 
-        if(".?!".Contains(word[word.Length-1]))
+        if(".?!".Contains(word[word.Length-1])) //checks if the last character of the word has .,? or !
         {
-            punctuation = word[word.Length-1];
+            punctuation = word[word.Length-1]; //if true it stoes the .,?,! and removes it from "word"
             word = word.Substring(0, word.Length-1);
         }
-    string noParentWord = word.Substring(1,word.Length-2);
+    string noParentWord = word.Substring(1,word.Length-2); // extracts the placeholder without paraentheses from "word and assigns it to questionword
     string questionWord = word.Substring(1,word.Length-2); // cound use range operatr but visionalitation 
 
         if("aeiou".Contains(questionWord[0]))
@@ -51,15 +51,15 @@ for(int i = 0; i<storyWords.Length; i++)
         article = "a";
         };
 
-        Console.Write($"Please give me {article} {questionWord} ");
-        storyWords[i] = (Console.ReadLine() + punctuation);
+        Console.Write($"Please give me {article} {questionWord} "); //ask the user to type
+        storyWords[i] = (Console.ReadLine() + punctuation);//reads the user input and adds any stored punctuation then replaces the placeholder with the user provided word 
     };
 }
 Console.WriteLine();
 
 for (int newStory = 0; newStory<storyWords.Length; newStory++)
 {
-    Console.Write($"{storyWords[newStory]} ");
+    Console.Write($"{storyWords[newStory]} ");// loops through the storywords array and prints each word 
 }
 
-Console.WriteLine();
+
